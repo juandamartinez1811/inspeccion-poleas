@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>  
+    <meta charset="UTF-8">
+    <title>Formulario</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/ITP.ICO') }}" type="image/x-icon">
+
+</head>
+<body>
+    <h1>Formulario de Inspección</h1>
+    <form action="/procesar" method="POST">
+        <label>Ingresa el valor uno:</label>
+        <input type="text" name="valor1">
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
