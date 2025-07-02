@@ -9,17 +9,25 @@
 <body>
     <body>
     <h1>Formulario de Inspección</h1>
-
-    {% if error %}
-        <p style="color:red;">{{ error }}</p>
-    {% endif %}
+        
+    <form>
+        <label>
+            <input type="radio" name="Pulgadas" value="Pulgadas" checked> Pulgadas
+        </label><br>
+        <label>
+            <input type="radio" name="Milimetros" value="Milimetros"> Milimetros
+        </label><br>
+    </form>
 
     <form action="/procesar" method="POST">
         <label>Ingresa el valor uno:</label>
         <input type="text" name="valor1">
         <button type="submit">Enviar</button>
     </form>
-</body>
+    
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
 
 </body>
 </html>
