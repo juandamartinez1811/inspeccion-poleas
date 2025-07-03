@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request,redirect, url_for
 import firebase_admin
 from firebase_admin import credentials, firestore
+import webbrowser
 
 #aqui se inicializa flask
 app = Flask(__name__)
@@ -27,4 +28,5 @@ def procesar():
         return render_template('index.html', error=error)
 
 if __name__ == '__main__':
+    webbrowser.open("http://127.0.0.1:5000")
     app.run(debug=True)
