@@ -15,18 +15,28 @@ db = firestore.client()
 def formulario():
     return render_template('index.html')
 
-@app.route('/procesar', methods=['POST'])
+@app.route('/procesar', methods=['POST'])   
 def procesar():
     valor1 = request.form['valor1']
-    try:
-        numero=str(valor1)
-#Hay que programar los dos botones para elegir si se debe hacer la busqueda por pulgada o por milimetros#
-#programar las dos querys#
+    unidad = request.form['Unidad']
 
-    except ValueError:  
-        error = "⚠️ Debes ingresar un número válido"
-        return render_template('index.html', error=error)
-
+    if unidad=='Milimetros':
+        try:
+            val=float(valor1)
+            return render_template('resultado.html',val=val,unidad=unidad)
+        except ValueError:
+            error='No se ingreso un valor numerico'
+            return render_template('index.html',error=error)
+    elif unidad=='Pulgadas':  
+        try: 
+            val=str(valor1)
+            return render_template('resultado.html',val=val,unidad=unidad)
+        except ValueError:
+            error='No se ingreso un valor aceptable'
+            return render_template('index.html',error=error)
+            
 if __name__ == '__main__':
-    webbrowser.open("http://127.0.0.1:5000")
+    import os
+    if os.environ.get("WERKZEUG_RUN_MAIN") == "true":
+        webbrowser.open("http://127.0.0.1:5000")
     app.run(debug=True)
